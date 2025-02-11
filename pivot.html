@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <!-- Google tag (gtag.js) -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-13HZT60G3T"></script>
+   <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-13HZT60G3T');
+   </script>
+   <title>Pivot Demo</title>
+   <!-- Scripts -->
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/js/d3.min.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/c3.min.js"></script> -->
+    <script type="text/javascript" src="assets/js/papaparse.min.js"></script>
+    <script type="text/javascript" src="assets/js/plotly-basic-latest.min.js"></script>
+    <script type="text/javascript" src="assets/js/pivot.js"></script>
+    <script type="text/javascript" src="assets/js/d3_renderers.js"></script>
+    <!-- <script type="text/javascript" src="assets/js/C3_renderers.js"></script> -->
+    <script type="text/javascript" src="assets/js/plotly_renderers.js"></script>
+    <script type="text/javascript" src="assets/js/export_renderers.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/pivot.css" />
+   <style>
+    body {font-family: Verdana;}
+   </style>
+   <!-- optional: mobile support with jqueryui-touch-punch -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  </head>
+ <body>
+  <script type="text/javascript">
+   $(function(){
+    var renderers =
+     $.extend(
+      $.pivotUtilities.renderers,
+      $.pivotUtilities.plotly_renderers,
+      $.pivotUtilities.d3_renderers,
+      //$.pivotUtilities.c3_renderers,
+      $.pivotUtilities.export_renderers);
+     Papa.parse("Data/economic_data.csv", {
+      download: true, skipEmptyLines: true, complete: function(parsed){
+       $("#output").pivotUI(parsed.data, {
+        renderers: renderers,
+        rows: ["geo", "Var", "Group"], cols: ["time"],
+        rendererName: "Line Chart",
+        aggregatorName: "Average",
+        vals: ["Z"],
+        inclusions: {"geo":["Belgium"],
+        "Year":["2024","2025"],
+        "Var":["UR", "CPI", "HPI", "GDP"],
+        "Group":["All-items HICP","Gross domestic product at market prices","Total", "From 20 to 64 years"]}
+      });
+     }
+    });
+   });
+  </script>
+  <p style="width: 1000px"></p>
+  <div id="output" style="margin: 30px;"></div>
+ </body>
+</html>

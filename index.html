@@ -15,7 +15,7 @@
 		
 	<!-- JSON-LD Structured Data for Google Sitelinks -->
         <script type="application/ld+json">
-	    {
+	  {
 	  "@context": "https://schema.org",
 	  "@type": "WebSite",
 	  "name": "Credit Analytics",
@@ -28,43 +28,40 @@
              "urlTemplate": "https://creditanalytics.org/search?q={search_term_string}"
            },
            "query-input": "required name=search_term_string"
-          },
-	  "breadcrumb": {
-	    "@type": "BreadcrumbList",
-	    "itemListElement": [
-	      {
+           }
+	  }
+	</script>
+		
+	<script type="application/ld+json">
+	{
+         "@context": "https://schema.org",
+         "@type": "BreadcrumbList",
+	 "itemListElement": [{
 	        "@type": "ListItem",
 	        "position": 1,
 	        "name": "Home",
 	        "item": "https://creditanalytics.org"
-	      },
-	      {
+	      },{
 	        "@type": "ListItem",
 	        "position": 2,
 	        "name": “About”,
 	        "item": "https://creditanalytics.org/About”
-	      },
-	      {
+	      },{
 	        "@type": "ListItem",
 	        "position": 3,
 	        "name": “Automated Decision Models”,
 	        "item": "https://creditanalytics.org/Products”
-	      },
-	      {
+	      },{
 	        "@type": "ListItem",
 	        "position": 4,
 	        "name": “Validation of internal models”,
 	        "item": "https://creditanalytics.org/Validation”
-	      },
-	      {
+	      },{
 	        "@type": "ListItem",
 	        "position": 3,
 	        "name": “Economic dashboard”,
 	        "item": "https://creditanalytics.org/Dashboard”
-	      }
-	    ]
-	  }
-	 }
+	      }] }}
          </script>
 	 <title>Credit Analytics</title>
 	 <meta charset="utf-8" />
